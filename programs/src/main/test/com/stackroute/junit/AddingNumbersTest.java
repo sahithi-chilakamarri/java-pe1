@@ -4,46 +4,48 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.stackroute.junit.AddingNumbers.add;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AddingNumbersTest {
-    public AddingNumbers ad;
+
+    public AddingNumbers addingNumbers;
+
     @Before
     public void setUp(){
-        System.out.println("Before");
-        ad=new AddingNumbers();
+
+        addingNumbers =new AddingNumbers();
     }
+
     @After
     public void tearDown(){
-        System.out.println("After");
-        ad=null;
+        addingNumbers =null;
     }
+
     @Test
-    public void givenOneStringShouldReturnTotal(){
+    public void givenOneStringOfNumbersShouldReturnTotal(){
         //arrange
         //act
-        String result=ad.add("20 25 5");
+        String result= addingNumbers.add("20 25 5");
         //assert
         assertEquals("50",result);
     }
+
     @Test
     public void givenOneStringShouldReturnError(){
         //arrange
         //act
-        String result=ad.add("20 25 ch");
+        String result= addingNumbers.add("20 25 ch");
         //assert
         assertEquals("Error",result);
     }
+
     @Test
-    public void givenOneNullShouldReturnError(){
+    public void givenOneNegativeNumberShouldReturnSum(){
         //arrange
         //act
-        String result=ad.add("null");
+        String result= addingNumbers.add("10 25 -5");
         //assert
-        assertEquals("Error",result);
+        assertEquals("30",result);
     }
-
-
 
 }
